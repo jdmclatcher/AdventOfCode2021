@@ -16,8 +16,7 @@ public class Solution {
     }
 
     private static int divePart1() throws IOException {
-        Utility util = new Utility();
-        BufferedReader reader = util.getReader(2, false);
+        BufferedReader reader = Utility.getReader(2, false);
         if (reader == null) {
             System.err.println("ERROR: No reader.");
             return -1;
@@ -26,7 +25,7 @@ public class Solution {
         int depth = 0;
         int position = 0;
         while ((line = reader.readLine()) != null) {
-            // determine direction and update accordingly
+            // determine position and depth and update accordingly
             if (line.contains("forward")) {
                 String[] args = line.split(" ");
                 position += Integer.parseInt(args[1]);
@@ -42,8 +41,7 @@ public class Solution {
     }
 
     private static int divePart2() throws IOException {
-        Utility util = new Utility();
-        BufferedReader reader = util.getReader(2, false);
+        BufferedReader reader = Utility.getReader(2, false);
         if (reader == null) {
             System.err.println("ERROR: No reader.");
             return -1;
@@ -53,7 +51,7 @@ public class Solution {
         int position = 0;
         int aim = 0;
         while ((line = reader.readLine()) != null) {
-            // determine direction and update accordingly
+            // determine position, aim and depth and update accordingly
             if (line.contains("forward")) {
                 String[] args = line.split(" ");
                 position += Integer.parseInt(args[1]);

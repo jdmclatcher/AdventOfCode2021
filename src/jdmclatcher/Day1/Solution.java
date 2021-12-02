@@ -17,8 +17,7 @@ public class Solution {
     }
 
     public static int sonarSweepPart1() throws IOException {
-        Utility util = new Utility();
-        BufferedReader reader = util.getReader(1, false);
+        BufferedReader reader = Utility.getReader(1, false);
         if (reader == null) {
             System.err.println("ERROR: No reader.");
             return -1;
@@ -42,8 +41,7 @@ public class Solution {
     }
 
     public static int sonarSweepPart2() throws IOException {
-        Utility util = new Utility();
-        BufferedReader reader = util.getReader(1, false);
+        BufferedReader reader = Utility.getReader(1, false);
         if (reader == null) {
             System.err.println("ERROR: No reader.");
             return -1;

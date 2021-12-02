@@ -1,6 +1,6 @@
 ## Advent of Code 2021
 
-### My submissions for the Advent of Code 2021!
+### My solutions for the Advent of Code 2021!
 
 Solutions by Jonathan McLatcher
 

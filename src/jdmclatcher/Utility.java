@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class Utility {
-    public BufferedReader getReader(int day, boolean test) {
+    public static BufferedReader getReader(int day, boolean test) {
         String testString = "";
         if (test) {
             testString = "test_";
