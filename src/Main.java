@@ -11,9 +11,10 @@ public class Main {
         try {
             System.out.println(sonarSweepPart1());
             System.out.println(sonarSweepPart2());
+            System.out.println(divePart1());
+            System.out.println(divePart2());
         } catch (IOException e) {
             System.err.println("ERROR: IO Exception thrown");
-            return;
         }
     }
     private static BufferedReader getReader(int day, boolean test) {
@@ -22,9 +23,8 @@ public class Main {
             testString = "_test";
         }
         File file = new File("/Users/jdmclatcher" +
-                "/Documents/Code/AdventOfCode/src" +
+                "/Documents/Code/AdventOfCode2021/src" +
                 "/day" + day + "" + testString + "_input.txt");
-        System.out.println(file.getAbsolutePath());
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -35,7 +35,7 @@ public class Main {
         return reader;
     }
 
-    //region *** DAY1 - Sonar Sweep ***
+    //region *** DAY 1 - Sonar Sweep ***
     // https://adventofcode.com/2021/day/1
     public static int sonarSweepPart1() throws IOException {
         BufferedReader reader = getReader(1, false);
@@ -71,7 +71,7 @@ public class Main {
         int numIncreases = 0;
         boolean firstPass = true;
         // use map to hold values
-        HashMap<Integer, Integer> map = new HashMap();
+        HashMap<Integer, Integer> map = new HashMap<>();
         int loopTracker = 0;
         while ((line = reader.readLine()) != null) {
             int depth = Integer.parseInt(line);
@@ -94,6 +94,60 @@ public class Main {
             loopTracker++;
         }
         return numIncreases;
+    }
+    //endregion
+
+    //region *** DAY 2 - Dive! ***
+    private static int divePart1() throws IOException {
+        BufferedReader reader = getReader(2, false);
+        if (reader == null) {
+            System.err.println("ERROR: No reader.");
+            return -1;
+        }
+        String line;
+        int depth = 0;
+        int position = 0;
+        while ((line = reader.readLine()) != null) {
+            // determine direction and update accordingly
+            if (line.contains("forward")) {
+                String[] args = line.split(" ");
+                position += Integer.parseInt(args[1]);
+            } else if (line.contains("down")) {
+                String[] args = line.split(" ");
+                depth += Integer.parseInt(args[1]);
+            } else if (line.contains("up")) {
+                String[] args = line.split(" ");
+                depth -= Integer.parseInt(args[1]);
+            }
+        }
+        return depth * position;
+    }
+
+    private static int divePart2() throws IOException {
+        BufferedReader reader = getReader(2, false);
+        if (reader == null) {
+            System.err.println("ERROR: No reader.");
+            return -1;
+        }
+        String line;
+        int depth = 0;
+        int position = 0;
+        int aim = 0;
+        while ((line = reader.readLine()) != null) {
+            // determine direction and update accordingly
+            if (line.contains("forward")) {
+                String[] args = line.split(" ");
+                position += Integer.parseInt(args[1]);
+                depth += aim * Integer.parseInt(args[1]);
+            } else if (line.contains("down")) {
+                String[] args = line.split(" ");
+                aim += Integer.parseInt(args[1]);
+            } else if (line.contains("up")) {
+                String[] args = line.split(" ");
+                aim -= Integer.parseInt(args[1]);
+            }
+        }
+        return depth * position;
     }
     //endregion
 }
